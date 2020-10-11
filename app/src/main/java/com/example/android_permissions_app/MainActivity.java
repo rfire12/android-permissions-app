@@ -43,8 +43,18 @@ public class MainActivity extends AppCompatActivity {
         phoneSw = findViewById(R.id.phoneSw);
         contactsSw = findViewById(R.id.contactsSw);
 
+        Button cancelBtn = findViewById(R.id.cancelBtn);
         Button continueBtn = findViewById(R.id.continueBtn);
 
+        // Close APP
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+            }
+        });
+
+        // Check Permissions
         continueBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -65,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 if( permissionsList.size() != 0 ) {
                     ActivityCompat.requestPermissions(MainActivity.this, permissionsList.toArray(new String[0]), PERMISSION_CODE);
                 }
-
             }
 
         });
