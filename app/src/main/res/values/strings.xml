@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">android-permissions-app</string>
+    <string name="app_name">My First Application</string>
+    <string name="title">Choose what to allow APP to access</string>
+    <string name="storage">Storage</string>
+    <string name="storage_sub">access photos, media, and files on your device</string>
+    <string name="location">Location</string>
+    <string name="location_sub">access this device\'s location</string>
+    <string name="camera">Camera</string>
+    <string name="camera_sub">take pictures and record video</string>
+    <string name="phone">Phone</string>
+    <string name="phone_sub">make and manage phone calls</string>
+    <string name="contacts">Contacts</string>
+    <string name="contacts_sub">access your contacts</string>
+    <string name="cancel">cancel</string>
+    <string name="next">continue</string>
 </resources>
