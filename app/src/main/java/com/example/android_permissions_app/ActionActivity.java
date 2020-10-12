@@ -7,7 +7,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -56,6 +59,42 @@ public class ActionActivity extends AppCompatActivity {
                     showSnackbar("Please request permission.", "");
             }
         });
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isPermissionGranted(MainActivity.ACCESS_FINE_LOCATION))
+                    showSnackbar("Permission already granted.", MainActivity.ACCESS_FINE_LOCATION );
+                else
+                    showSnackbar("Please request permission.", "");
+            }
+        });
+        cameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isPermissionGranted(MainActivity.CAMERA))
+                    showSnackbar("Permission already granted.", MainActivity.CAMERA );
+                else
+                    showSnackbar("Please request permission.", "");
+            }
+        });
+        phoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isPermissionGranted(MainActivity.CALL_PHONE))
+                    showSnackbar("Permission already granted.", MainActivity.CALL_PHONE );
+                else
+                    showSnackbar("Please request permission.", "");
+            }
+        });
+        contactsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isPermissionGranted(MainActivity.READ_CONTACTS))
+                    showSnackbar("Permission already granted.", MainActivity.READ_CONTACTS );
+                else
+                    showSnackbar("Please request permission.", "");
+            }
+        });
     }
 
     public Boolean isPermissionGranted(String permission) {
@@ -77,6 +116,45 @@ public class ActionActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+                break;
+            case MainActivity.ACCESS_FINE_LOCATION:
+                snackbar.setAction("OPEN", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                Uri.parse("google.navigation:q=google"));
+                        startActivity(intent);
+                    }
+                });
+                break;
+            case MainActivity.CAMERA:
+                snackbar.setAction("OPEN", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivity(intent);
+                    }
+                });
+                break;
+            case MainActivity.CALL_PHONE:
+                snackbar.setAction("OPEN", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+                        intent.setData(Uri.parse("tel:8091234567"));
+                        startActivity(intent);
+                    }
+                });
+                break;
+            case MainActivity.READ_CONTACTS:
+                snackbar.setAction("OPEN", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_PICK,  ContactsContract.Contacts.CONTENT_URI);
+                        startActivity(intent);
+                    }
+                });
+                break;
         }
 
         snackbar.show();
