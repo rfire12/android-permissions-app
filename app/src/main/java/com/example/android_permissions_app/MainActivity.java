@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.Manifest;
@@ -77,7 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 // If there are permissions to request.
                 if( permissionsList.size() != 0 ) {
                     ActivityCompat.requestPermissions(MainActivity.this, permissionsList.toArray(new String[0]), PERMISSION_CODE);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, ActionActivity.class);
+                    startActivity(intent);
                 }
+
             }
 
         });
@@ -139,5 +144,10 @@ public class MainActivity extends AppCompatActivity {
         return ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Intent intent = new Intent(MainActivity.this, ActionActivity.class);
+        startActivity(intent);
+    }
 }
