@@ -23,12 +23,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
-    private static final String ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String CAMERA = Manifest.permission.CAMERA;
-    private static final String CALL_PHONE = Manifest.permission.CALL_PHONE;
-    private static final String READ_CONTACTS = Manifest.permission.READ_CONTACTS;
-    private static final int PERMISSION_CODE = 1;
+    public static final String READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
+    public static final String ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    public static final String CAMERA = Manifest.permission.CAMERA;
+    public static final String CALL_PHONE = Manifest.permission.CALL_PHONE;
+    public static final String READ_CONTACTS = Manifest.permission.READ_CONTACTS;
+    public static final int PERMISSION_CODE = 1;
     private Switch storageSw;
     private Switch locationSw;
     private Switch cameraSw;
